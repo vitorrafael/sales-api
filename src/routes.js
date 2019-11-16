@@ -1,9 +1,13 @@
 const express = require('express');
+const EmployeeController = require('./controllers/EmployeeController');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    return res.json({ hello: "Hello World"} );
-})
+// Employee related routes
+router.get('/employees', EmployeeController.index);
+router.get('/employees/:id', EmployeeController.getEmployee);
+router.post('/employees', EmployeeController.store);
+router.put('/employees/:id', EmployeeController.update);
+router.delete('/employees/:id', EmployeeController.delete);
 
 module.exports = router;
