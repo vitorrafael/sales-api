@@ -1,0 +1,19 @@
+{
+  "name": "salesapp",
+  "version": "1.0.0",
+  "main": "src/server.js",
+  "author": "vitorrafael <vrsilveira07@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql2": "^2.0.0",
+    "sequelize": "^5.21.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4",
+    "sequelize-cli": "^5.5.1"
+  }
+}
