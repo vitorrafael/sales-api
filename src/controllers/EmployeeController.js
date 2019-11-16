@@ -4,14 +4,34 @@ module.exports = {
     async index(req, res) {
         const employees = await Employee.findAll();
 
-        return res.json(employees);
+        return res.status(200).json(employees);
     },
 
     async store(req, res) {
         const { name, email, monthly_salary } = req.body;
 
         const employee = await Employee.create({ name, email, monthly_salary });
+        
+        return res.status(201).json(employee);
+    },
 
-        return res.json(employee);
+    async update(req, res) {
+        const { name, email, monthly_salary } = req.body;
+        const { id } = req.params;
+        try {
+            await Employee.update({ name, email, monthly_salary }, { where: { id: id } })
+        }
+        catch (err) {
+            return res.sendStatus(500);
+        }
+        return res.sendStatus(204);
+    },
+
+    async delete(req, res) {
+        const { id } = req.params;
+
+        Employee.destroy({ where: { id: id } });
+
+        return res.sendStatus(204);
     }
 }
