@@ -7,6 +7,18 @@ module.exports = {
         return res.status(200).json(employees);
     },
 
+    async getEmployee(req, res) {
+        const { id } = req.params;
+
+        const employee = await Employee.findByPk(id);
+        
+        if (!employee) {
+            return res.sendStatus(404);
+        } else {
+            return res.status(200).json(employee);
+        }
+    },
+
     async store(req, res) {
         const { name, email, monthly_salary } = req.body;
 
