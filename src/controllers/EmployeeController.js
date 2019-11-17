@@ -11,7 +11,7 @@ module.exports = {
         const { id } = req.params;
 
         const employee = await Employee.findByPk(id);
-        
+
         if (!employee) {
             return res.sendStatus(404);
         } else {
@@ -23,7 +23,7 @@ module.exports = {
         const { name, email, monthly_salary } = req.body;
 
         const employee = await Employee.create({ name, email, monthly_salary });
-        
+
         return res.status(201).json(employee);
     },
 
