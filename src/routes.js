@@ -2,6 +2,8 @@ const express = require('express');
 const EmployeeController = require('./controllers/EmployeeController');
 const CustomerController = require('./controllers/CustomerController');
 const ProductController = require('./controllers/ProductController');
+const SalesController = require('./controllers/SalesController');
+const ReportController = require('./controllers/ReportController');
 
 const router = express.Router();
 
@@ -24,5 +26,12 @@ router.get('/products/:id', ProductController.getProduct);
 router.post('/products', ProductController.store);
 router.put('/products/:id', ProductController.update);
 router.delete('/products/:id', ProductController.delete);
+
+// Sales related routes
+router.get('/sales', SalesController.index);
+router.post('/sales/:emp_id/:product_id/:customer_id', SalesController.store);
+
+// Report related routes
+router.get('/report/:emp_id', ReportController.show);
 
 module.exports = router;
