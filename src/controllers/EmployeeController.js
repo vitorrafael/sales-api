@@ -11,7 +11,7 @@ module.exports = {
         const { id } = req.params;
 
         const employee = await Employee.findByPk(id);
-
+        
         if (!employee) {
             return res.sendStatus(404);
         } else {
