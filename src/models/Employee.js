@@ -10,6 +10,10 @@ class Employee extends Model {
             sequelize: connection
         });
     }
+
+    static associate(models) {
+        this.hasMany(models.Sales, { foreignKey: 'customer_id', as: 'buyers' });
+    }
 }
 
 module.exports = Employee;

@@ -7,6 +7,10 @@ class Product extends Model {
       value: DataTypes.FLOAT
     }, { sequelize: connection });
   }
+
+  static associate(models) {
+    this.hasMany(models.Sales, { foreignKey: 'product_id', as: 'item' });
+  }
 }
 
 module.exports = Product;
